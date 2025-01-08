@@ -8,6 +8,8 @@ Both pages include detailed description on the libraries to install as well as t
 
 The code here was developed using the slurm executor on NYU's [UltraViolet HPC cluster](https://med.nyu.edu/research/scientific-cores-shared-resources/high-performance-computing-core). The python script is therefore here given with slurm headers appropriate for this cluster as example so they could easily be adapted.  
 
+The checkpoints of the trained networks can be downloaded from our [public repository](https://genome.med.nyu.edu/public/tsirigoslab/DeepLearning/Melanoma_Faak_etal/). 
+
 
 ## 1. Pre-processing
 
