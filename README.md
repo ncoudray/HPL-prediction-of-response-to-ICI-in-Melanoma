@@ -2,13 +2,17 @@
 
 Use of the Histomorphological Phenotype Learning self-supervised tools to study the response to ICI in Melanoma. This repository is related to the manuscriot titled: "Artificial Intelligence Algorithm Predicts Response to Immune Checkpoint Inhibitors." It is provided as is for research purpose and must not be use in clinical practice.
 
+## Associated manuscript
+
+"Artificial Intelligence Algorithm Predicts Response to Immune Checkpoint Inhibitors." In preparation.
+
 ## Required packages
 To run the code you need to install [DeepPATH](https://github.com/ncoudray/DeepPATH) and [HPL](https://github.com/AdalbertoCq/Histomorphological-Phenotype-Learning). 
 Both pages include detailed description on the libraries to install as well as the meaning of the options used here.
 
 The code here was developed using the slurm executor on NYU's [UltraViolet HPC cluster](https://med.nyu.edu/research/scientific-cores-shared-resources/high-performance-computing-core). The python script is therefore here given with slurm headers appropriate for this cluster as example so they could easily be adapted.  
 
-The checkpoints of the trained networks can be downloaded from our [public repository](https://genome.med.nyu.edu/public/tsirigoslab/DeepLearning/Melanoma_Faak_etal/). 
+The steps below detail the code used in the manuscript, from training Barlow-Twins to Cox regressions, including the leiden clustering step. The checkpoints of the trained networks can be downloaded from our [public repository](https://genome.med.nyu.edu/public/tsirigoslab/DeepLearning/Melanoma_Faak_etal/). To project your own dataset into the trained Barlow-Twins network and associate the HPCs, see the README file in the `case_study` folder
 
 
 ## 1. Pre-processing
