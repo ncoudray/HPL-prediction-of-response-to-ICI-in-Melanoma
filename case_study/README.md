@@ -108,13 +108,6 @@ This is the visual control that your tiles have been associated with the proper 
 
 A few examples below showing tiles randonly selected from the train set (left) and from the TCGA cohort (right) from a few HPCs.
 
-<!--
-![HPC4.jpeg](HPC4.jpeg)
-![HPC5.jpeg](HPC5.jpeg)
-![HPC6.jpeg](HPC6.jpeg)
-![HPC32.jpeg](HPC32.jpeg)
-![HPC45.jpeg](HPC45.jpeg)
---!>
 
 <img src="HPC4.jpeg" width="350"/> 
 <img src="HPC5.jpeg" width="350"/>
@@ -144,25 +137,10 @@ To get the KM plot for the training set and the TCGA dataset, the following scri
 ```shell
 sbatch sb_09_CoxReg_Indiv.sh
 ```
+
 As before, modify the `Opt` option accordingly. 
 
 For `Opt 1` (survival regardless of the treatment, you would expect these results:
-
-<!--
-<div style="display: flex; justify-content: space-between;">
-
-    <img src="v01_OS_001_ff3_alpha_10p0_l1ratio_0p0_KM_leiden_2p0_test.jpg" width="300" />
-    <img src="v01_OS_001_ff3_alpha_10p0_l1ratio_0p0_KM_leiden_2p0_additional.jpg" width="300" />
-
-</div>
-<div style="text-align: center;">
-  <p><strong>Sine Wave</strong></p>
-</div>
-
-<div style="text-align: center;">
-  <p><strong>Cosine Wave</strong></p>
-</div>
---!>
 
 
 | Cross-validation on the training set | TCGA cohort |
