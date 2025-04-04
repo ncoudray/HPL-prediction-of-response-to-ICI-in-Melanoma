@@ -148,7 +148,7 @@ As before, modify the `Opt` option accordingly.
 
 For `Opt 1` (survival regardless of the treatment, you would expect these results:
 
-
+<!--
 <div style="display: flex; justify-content: space-between;">
 
     <img src="v01_OS_001_ff3_alpha_10p0_l1ratio_0p0_KM_leiden_2p0_test.jpg" width="300" />
@@ -162,7 +162,7 @@ For `Opt 1` (survival regardless of the treatment, you would expect these result
 <div style="text-align: center;">
   <p><strong>Cosine Wave</strong></p>
 </div>
-
+--!>
 
 
 | Cross-validation on the training set | TCGA cohort |
