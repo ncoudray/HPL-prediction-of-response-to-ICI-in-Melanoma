@@ -151,16 +151,16 @@ For `Opt 1` (survival regardless of the treatment, you would expect these result
 
 <div style="display: flex; justify-content: space-between;">
 
-  <div style="text-align: center; margin-right: 10px;">
     <img src="v01_OS_001_ff3_alpha_10p0_l1ratio_0p0_KM_leiden_2p0_test.jpg" width="300" />
-    <p><strong>Cross-validation on the training set</strong></p>
-  </div>
-
-  <div style="text-align: center; margin-left: 10px;">
     <img src="v01_OS_001_ff3_alpha_10p0_l1ratio_0p0_KM_leiden_2p0_additional.jpg" width="300" />
-    <p><strong>TCGA cohort</strong></p>
-  </div>
 
+</div>
+<div style="text-align: center;">
+  <p><strong>Sine Wave</strong></p>
+</div>
+
+<div style="text-align: center;">
+  <p><strong>Cosine Wave</strong></p>
 </div>
 
 
