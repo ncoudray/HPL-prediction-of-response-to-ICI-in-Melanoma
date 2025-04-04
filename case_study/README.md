@@ -175,7 +175,7 @@ Although it is not known whether the patients from the TCGA cohorts had anti-PD-
 
 Cross-validation on the training set             |  TCGA cohort
 :-------------------------:|:-------------------------:
-<img src="v01_OS_003_ff3_antiPD1_selected_HPC_KM_leiden_2p0_test.jpg" width="250"/> | <img src="v01_OS_003_ff3_antiPD1_selected_HPC_KM_leiden_2p0_additional.jpg" width="250"/>
+|![](v01_OS_003_ff3_antiPD1_selected_HPC_KM_leiden_2p0_test.jpg){:width="300px"} | ![](v01_OS_003_ff3_antiPD1_selected_HPC_KM_leiden_2p0_additional.jpg){:width="300px"} 
 
 
 ## 9. Example of additional tests
