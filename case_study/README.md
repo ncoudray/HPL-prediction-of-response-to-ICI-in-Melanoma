@@ -149,11 +149,28 @@ As before, modify the `Opt` option accordingly.
 For `Opt 1` (survival regardless of the treatment, you would expect these results:
 
 
+<div style="display: flex; justify-content: space-between;">
+
+  <div style="text-align: center; margin-right: 10px;">
+    <img src="v01_OS_001_ff3_alpha_10p0_l1ratio_0p0_KM_leiden_2p0_test.jpg" width="300" />
+    <p><strong>Cross-validation on the training set</strong></p>
+  </div>
+
+  <div style="text-align: center; margin-left: 10px;">
+    <img src="v01_OS_001_ff3_alpha_10p0_l1ratio_0p0_KM_leiden_2p0_additional.jpg" width="300" />
+    <p><strong>TCGA cohort</strong></p>
+  </div>
+
+</div>
+
+
+
 Cross-validation on the training set             |  TCGA cohort
 :-------------------------:|:-------------------------:
 <img src="v01_OS_001_ff3_alpha_10p0_l1ratio_0p0_KM_leiden_2p0_test.jpg" width="250"/> | <img src="v01_OS_001_ff3_alpha_10p0_l1ratio_0p0_KM_leiden_2p0_additional.jpg" width="250"/>
 
 Although it is not known whether the patients from the TCGA cohorts had anti-PD-1 treatment, projecting it on the anti-PD-1 regression shown in the manuscript would result in the curve below:
+
 
 Cross-validation on the training set             |  TCGA cohort
 :-------------------------:|:-------------------------:
@@ -167,15 +184,15 @@ If your dataset contains extra information from orthogonal methods, you can anal
 
 From it, you would obtain the Spearman Correlation between the TMB and the HPCs:
 
-<img src="TMB_SC_values.png" width="400"/> 
+<img src="TMB_SC_values.png" width="600"/> 
 
 the p-values associated:
 
-<img src="TMB_SC_pvalues.png" width="400"/> 
+<img src="TMB_SC_pvalues.png" width="600"/> 
 
 and a those information plotted on the same PAGA graph as those shown in the manuscript:
 
-<img src="TMB_PAGA.png" width="250"/> 
+<img src="TMB_PAGA.png" width="400"/> 
 
 
 
