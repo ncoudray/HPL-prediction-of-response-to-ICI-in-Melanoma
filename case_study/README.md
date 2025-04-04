@@ -167,7 +167,8 @@ For `Opt 1` (survival regardless of the treatment, you would expect these result
 
 Cross-validation on the training set             |  TCGA cohort
 :-------------------------:|:-------------------------:
-<img src="v01_OS_001_ff3_alpha_10p0_l1ratio_0p0_KM_leiden_2p0_test.jpg" width="250"/> | <img src="v01_OS_001_ff3_alpha_10p0_l1ratio_0p0_KM_leiden_2p0_additional.jpg" width="250"/>
+![](v01_OS_001_ff3_alpha_10p0_l1ratio_0p0_KM_leiden_2p0_test.jpg){:width="300px"} | ![](v01_OS_001_ff3_alpha_10p0_l1ratio_0p0_KM_leiden_2p0_additional.jpg){:width="300px"}
+
 
 Although it is not known whether the patients from the TCGA cohorts had anti-PD-1 treatment, projecting it on the anti-PD-1 regression shown in the manuscript would result in the curve below:
 
