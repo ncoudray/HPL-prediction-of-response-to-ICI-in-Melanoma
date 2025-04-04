@@ -3,8 +3,6 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=20G
-
-
 #SBATCH  --job-name=TCGA_09
 #SBATCH --output=log_TCGA_09_%A_%a.out
 #SBATCH  --error=log_TCGA_09_%A_%a.err
@@ -15,32 +13,25 @@ unset PYTHONPATH
 module load condaenvs/gpu/pathgan_SSL37
 
 
-
 all_ind=os_event_ind
 all_data=os_event_data
 remove_clusters_type=None
-
 nadd=results/BarlowTwins_3_twentyE/comb005_TCGA_40x_896px/h224_w224_n3_zdim128/hdf5_comb005_TCGA_40x_896px_he_complete_OS.h5
 
 
-Opt=1
+Opt=4
 
 if [ ${Opt} -eq 1 ]
 then
-	#nadd=results/BarlowTwins_3_twentyE/comb005_5setsNoNYU_40x_896px/h224_w224_n3_zdim128/hdf5_NYU005_0u2525_896pxx_he_combined_allosNYU.h5 
 	ff=3
         nfolder=comb005_v01_OS_001_ff${ff}
 	all_pickle=comb005_001_all_os_4folds.pkl
 	nres=2.0
-	#nlrat=0.2
-	#nalpha=0.35
-
         nlrat=0.0
-        nalpha=90
+        nalpha=10
 
 elif [ ${Opt} -eq 2 ]
 then
-	#nadd=results/BarlowTwins_3_twentyE/comb005_5setsNoNYU_40x_896px/h224_w224_n3_zdim128/hdf5_NYU005_0u2525_896pxx_he_combined_allosNYU.h5 
 	ff=3
 	nfolder=comb005_v01_OS_002_ff${ff}
 	all_pickle=comb005_002_all_os_4folds_antiCTLA4.pkl
@@ -54,7 +45,6 @@ then
 
 elif [ ${Opt} -eq 22 ]
 then
-	#nadd=results/BarlowTwins_3_twentyE/comb005_5setsNoNYU_40x_896px/h224_w224_n3_zdim128/hdf5_NYU005_0u2525_896pxx_he_combined_allosNYU.h5 
         ff=3
         nfolder=comb005_v01_OS_002_ff${ff}_selected_HPC
         all_pickle=comb005_002_all_os_4folds_antiCTLA4.pkl
@@ -64,7 +54,6 @@ then
 	remove_clusters_type=anti-CTLA4
 elif [ ${Opt} -eq 230 ]
 then
-        #nadd=results/BarlowTwins_3_twentyE/comb005_5setsNoNYU_40x_896px/h224_w224_n3_zdim128/hdf5_NYU005_0u2525_896pxx_he_combined_antiCTLA4.h5
         ff=3
         nfolder=comb005_v01_OS_002_ff${ff}_antiCTLA4
         all_pickle=comb005_002_all_os_4folds_antiCTLA4.pkl
@@ -220,7 +209,6 @@ then
 
 elif [ ${Opt} -eq 335 ]
 then
-        #nadd=results/BarlowTwins_3_twentyE/comb005_5setsNoNYU_40x_896px/h224_w224_n3_zdim128/hdf5_NYU005_0u2525_896pxx_he_combined_antiPD1_LN.h5
         ff=3
         nfolder=comb005_v01_OS_003_ff${ff}_LN_selected_HPC
         all_pickle=comb005_003_all_os_4folds_antiPD1.pkl
@@ -233,7 +221,6 @@ then
 
 elif [ ${Opt} -eq 4 ]
 then
-	#nadd=results/BarlowTwins_3_twentyE/comb005_5setsNoNYU_40x_896px/h224_w224_n3_zdim128/hdf5_NYU005_0u2525_896pxx_he_combined_both.h5
         ff=3
         nfolder=comb005_v01_OS_004_ff${ff}
         all_pickle=comb005_004_all_os_4folds_antiPD1andCTLA4.pkl

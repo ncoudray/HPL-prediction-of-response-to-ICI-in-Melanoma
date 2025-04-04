@@ -1,6 +1,6 @@
 # Case study
 
-Using a subset of the TCGA cohort, we illustrate here how you can potentially use the trained network on your own dataset and reproduce the results obtained in the manuscript. All examples are given as if runs are submitted on a slurm cluster. 
+Using a subset of the TCGA cohort, we illustrate here how you can potentially use the trained network on your own dataset and reproduce the results obtained in the manuscript. All examples are given as if runs are submitted on a slurm cluster. Before submitting any script, edit it to adjust the inputs and paths to match those on your system.
 
 ## Required packages and installation
 As mentioned esrlier, to run the code you need to install [DeepPATH](https://github.com/ncoudray/DeepPATH) and [HPL](https://github.com/AdalbertoCq/Histomorphological-Phenotype-Learning). For simplicity, the required libraries have been copied here but please refer to the original github pages for installations and associated environments. 
@@ -92,7 +92,7 @@ sbatch sb_04_AddField.sh
 
 In the same output directory as before, you should see a new h5 file named `hdf5_comb005_TCGA_40x_896px_he_complete_OS.h5`.
 
-## 5a. Assign Leiden cluster
+## 5. Assign Leiden cluster
 Assuming you have downloaded the result folder from our [public repository](https://genome.med.nyu.edu/public/tsirigoslab/DeepLearning/Melanoma_Faak_etal/), you can now copy (or synmlink) the `hdf5_comb005_TCGA_40x_896px_he_complete_OS.h5`  into the `results/BarlowTwins_3_twentyE/comb005_5setsNoNYU_40x_896px/h224_w224_n3_zdim128/` path. Then, you can assign HPCs to the TCGA tiles using the already trained dataset, and using the same resolution as the one used in the manuscript.
 
 ```shell
@@ -103,8 +103,8 @@ for resolution in
 In the `comb005_v01/adatas` subdirectory of this new path, you should see new `csv` files listing, for each tile, which HPC it is associated with. 
 
 
-## 5b. Check cluster assignment
-This is the visual control that your tiles have been associated with the proper HPC. To generate random tiles from your external dataset, you can use Bojing Liu's code (developed in Liu, Polack et al. 2025, Nat. Comm) copied in this github page (`utilities/BLiu_HPC_Tiles.ipynb`). You can open and run it via a jupyter notebook. For each HPC, it will select random tiles from your external cohort.They should be enriches in features associated with the HPC (see manuscript), and look like tiles randomy selected from the train and test cohort published (see manuscript or detailed images for each HPC in our public repository ([tiles_leiden_2p0_fold3.zip](https://genome.med.nyu.edu/public/tsirigoslab/DeepLearning/Melanoma_Faak_etal/tiles_leiden_2p0_fold3.zip)).
+## 6. Check cluster assignment
+This is the visual control that your tiles have been associated with the proper HPC. To generate random tiles from your external dataset, you can use Bojing Liu's code (developed in Liu, Polack et al. 2025, Nat. Comm) copied in this github page (`06_BLiu_HPC_Tiles.ipynb`). You can open and run it via a jupyter notebook. For each HPC, it will select random tiles from your external cohort.They should be enriches in features associated with the HPC (see manuscript), and look like tiles randomy selected from the train and test cohort published (see manuscript or detailed images for each HPC in our public repository ([tiles_leiden_2p0_fold3.zip](https://genome.med.nyu.edu/public/tsirigoslab/DeepLearning/Melanoma_Faak_etal/tiles_leiden_2p0_fold3.zip)).
 
 A few examples below showing tiles randonly selected from the train set (left) and from the TCGA cohort (right) from a few HPCs.
 
@@ -114,9 +114,40 @@ A few examples below showing tiles randonly selected from the train set (left) a
 ![HPC32.jpeg](HPC32.jpeg)
 ![HPC45.jpeg](HPC45.jpeg)
 
+Note: Because of the libraries used for now, the tiles are displayed with BGR instead of RGB convention. 
+
+
+## 7. Overall Cox regression
+In your output `result` folder (at the same level whee the h5 files are saved), create new subfolders for the subsequent outputs. For example, we named ours `comb005_v01_OS_001_ff3`, `comb005_v01_OS_002_ff3`, `comb005_v01_OS_003_ff3` and `comb005_v01_OS_004_ff3` to store results for Cox regression using training done on the whole training dataset (1), only the subset of patients treated with anti-CTLA4 (2), anti-PD1 (3), or with a combo of both (4). Since the same leiden clusters are used throughout the study, copy (or symlink) the adatas folder from `comb005_v01` into each of those 4 folders. 
+
+Although the TCGA cohort is different from our training set, not optimal and the treatments unknown, it will give users a good sense on how to apply the pipeline. Furthermore, the training graphs you should see should match those in the papers (except the 001 experiment which was not relevant to the study). 
+
+```shell
+sbatch sb_08_CoxReg.sh
+```
+
+As before, modify the code above according to your system. Note, in the script, you will need to adjust the value of option `Opt` from 1 to 4 depending on which Cox Regression you want to achieve (full dataset independent of the treatment, or treatment specific)
+
+
+## 8. Cox regression plots for fold 3 of each treatment
+To get the KM plot for the training set and the TCGA dataset, the following script can be used:
+
+```shell
+sbatch sb_09_CoxReg_Indiv.sh
+```
+As before, modify the `Opt` option accordingly. 
+
+For `Opt 1` (survival regardless of the treatment, you would expect these results:
+
+Cross-validation on the training set             |  TCGA cohort
+:-------------------------:|:-------------------------:
+![](v01_OS_001_ff3_alpha_10p0_l1ratio_0p0_KM_leiden_2p0_test.jpg)  |  ![](v01_OS_001_ff3_alpha_10p0_l1ratio_0p0_KM_leiden_2p0_additional.jpg)
 
 
 
+Cross-validation on the training set             |  TCGA cohort
+:-------------------------:|:-------------------------:
+<img src="v01_OS_001_ff3_alpha_10p0_l1ratio_0p0_KM_leiden_2p0_test.jpg" width="150"/> | <img src="v01_OS_001_ff3_alpha_10p0_l1ratio_0p0_KM_leiden_2p0_additional.jpg" width="150"/>
 
 
 
