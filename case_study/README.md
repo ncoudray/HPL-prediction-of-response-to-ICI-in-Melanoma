@@ -108,11 +108,20 @@ This is the visual control that your tiles have been associated with the proper 
 
 A few examples below showing tiles randonly selected from the train set (left) and from the TCGA cohort (right) from a few HPCs.
 
+<!--
 ![HPC4.jpeg](HPC4.jpeg)
 ![HPC5.jpeg](HPC5.jpeg)
 ![HPC6.jpeg](HPC6.jpeg)
 ![HPC32.jpeg](HPC32.jpeg)
 ![HPC45.jpeg](HPC45.jpeg)
+--!>
+
+<img src="HPC4.jpeg" width="350"/> 
+<img src="HPC5.jpeg" width="350"/>
+<img src="HPC6.jpeg" width="350"/>
+<img src="HPC32.jpeg" width="350"/>
+<img src="HPC45.jpeg" width="350"/>
+
 
 Note: Because of the libraries used for now, the tiles are displayed with BGR instead of RGB convention. 
 
@@ -139,15 +148,34 @@ As before, modify the `Opt` option accordingly.
 
 For `Opt 1` (survival regardless of the treatment, you would expect these results:
 
-Cross-validation on the training set             |  TCGA cohort
-:-------------------------:|:-------------------------:
-![](v01_OS_001_ff3_alpha_10p0_l1ratio_0p0_KM_leiden_2p0_test.jpg)  |  ![](v01_OS_001_ff3_alpha_10p0_l1ratio_0p0_KM_leiden_2p0_additional.jpg)
-
-
 
 Cross-validation on the training set             |  TCGA cohort
 :-------------------------:|:-------------------------:
-<img src="v01_OS_001_ff3_alpha_10p0_l1ratio_0p0_KM_leiden_2p0_test.jpg" width="150"/> | <img src="v01_OS_001_ff3_alpha_10p0_l1ratio_0p0_KM_leiden_2p0_additional.jpg" width="150"/>
+<img src="v01_OS_001_ff3_alpha_10p0_l1ratio_0p0_KM_leiden_2p0_test.jpg" width="250"/> | <img src="v01_OS_001_ff3_alpha_10p0_l1ratio_0p0_KM_leiden_2p0_additional.jpg" width="250"/>
+
+Although it is not known whether the patients from the TCGA cohorts had anti-PD-1 treatment, projecting it on the anti-PD-1 regression shown in the manuscript would result in the curve below:
+
+Cross-validation on the training set             |  TCGA cohort
+:-------------------------:|:-------------------------:
+<img src="v01_OS_003_ff3_antiPD1_selected_HPC_KM_leiden_2p0_test.jpg" width="250"/> | <img src="v01_OS_003_ff3_antiPD1_selected_HPC_KM_leiden_2p0_additional.jpg" width="250"/>
+
+
+## 9. Example of additional tests
+
+If your dataset contains extra information from orthogonal methods, you can analyse HPC enriched in tiles associated with specific features. For example, we retrieved the Tumor-Mutational Burden (TMB, file `labels_TCGA_TMB_unique.csv` attached) for that TCGA cohort and using a Spearman correlation, checked HPCs enriched in slides from patients with low/high TMB. The `TCGA_SKC_TMB.ipynb` code can be run via a jupyter notebook.
+
+
+From it, you would obtain the Spearman Correlation between the TMB and the HPCs:
+
+<img src="TMB_SC_values.png" width="400"/> 
+
+the p-values associated:
+
+<img src="TMB_SC_pvalues.png" width="400"/> 
+
+and a those information plotted on the same PAGA graph as those shown in the manuscript:
+
+<img src="TMB_PAGA.png" width="250"/> 
 
 
 

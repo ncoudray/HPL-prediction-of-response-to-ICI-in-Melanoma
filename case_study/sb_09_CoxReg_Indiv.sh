@@ -32,26 +32,15 @@ then
 
 elif [ ${Opt} -eq 2 ]
 then
-	ff=3
-	nfolder=comb005_v01_OS_002_ff${ff}
-	all_pickle=comb005_002_all_os_4folds_antiCTLA4.pkl
-	nres=2.0
-	nlrat=0.0
-	#nalpha=10
-	#nalpha=0.9
-	nalpha=0.5
-	#nlrat=0.1
-	#nalpha=1.2
-
-elif [ ${Opt} -eq 22 ]
-then
         ff=3
         nfolder=comb005_v01_OS_002_ff${ff}_selected_HPC
         all_pickle=comb005_002_all_os_4folds_antiCTLA4.pkl
         nres=2.0
         nlrat=0.0
         nalpha=10
-	remove_clusters_type=anti-CTLA4
+	remove_clusters_type='anti-CTLA4'
+
+
 elif [ ${Opt} -eq 230 ]
 then
         ff=3
