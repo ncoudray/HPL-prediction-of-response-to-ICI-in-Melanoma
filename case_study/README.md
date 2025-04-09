@@ -181,8 +181,8 @@ As a way to control your installation and settings, we also provide embedding an
 
 | Dataset | Cross-validation on the training set | TCGA cohort |
 |---------|--------------------------------------|-------------|
-| anti-PD-1 treatment | ![Cross-validation](NYU_002_KM_leiden_2p0_test.jpg) | ![TCGA cohort](NYU_002_KM_leiden_2p0_additional.jpg) |
-| anti-CTLA4 treatment | ![Cross-validation](NYU_004_KM_leiden_2p0_test.jpg) | ![TCGA cohort](NYU_003_KM_leiden_2p0_additional.jpg) |
+| anti-PD-1 treatment | ![Cross-validation](NYU_003_KM_leiden_2p0_test.jpg) | ![TCGA cohort](NYU_003_KM_leiden_2p0_additional.jpg) |
+| anti-CTLA-4 treatment | ![Cross-validation](NYU_002_KM_leiden_2p0_test.jpg) | ![TCGA cohort](NYU_002_KM_leiden_2p0_additional.jpg) |
 | combo treatment | ![Cross-validation](NYU_004_KM_leiden_2p0_test.jpg) | ![TCGA cohort](NYU_004_KM_leiden_2p0_additional.jpg) |
 
 
