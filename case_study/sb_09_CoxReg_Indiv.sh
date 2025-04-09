@@ -8,7 +8,6 @@
 #SBATCH  --error=log_TCGA_09_%A_%a.err
 
 
-
 unset PYTHONPATH
 module load condaenvs/gpu/pathgan_SSL37
 
@@ -16,208 +15,103 @@ module load condaenvs/gpu/pathgan_SSL37
 all_ind=os_event_ind
 all_data=os_event_data
 remove_clusters_type=None
-nadd=results/BarlowTwins_3_twentyE/comb005_TCGA_40x_896px/h224_w224_n3_zdim128/hdf5_comb005_TCGA_40x_896px_he_complete_OS.h5
 
 
-Opt=4
-
+Opt=2
 if [ ${Opt} -eq 1 ]
 then
-	ff=3
-        nfolder=comb005_v01_OS_001_ff${ff}
-	all_pickle=comb005_001_all_os_4folds.pkl
-	nres=2.0
+    	nadd=results/BarlowTwins_3_twentyE/comb005_trainE_40x_896px/h224_w224_n3_zdim128/hdf5_comb005_TCGA_40x_896px_he_complete_OS.h5
+   	ff=3
+    	nfolder=comb005_v01_OS_001_ff${ff}_TCGA
+    	all_pickle=up_comb005_001_all_os_4folds.pkl
+        nres=2.0
         nlrat=0.0
-        nalpha=10
+        nalpha=10.
+        remove_clusters_type='allT'
+        #remove_clusters_type='None'
 
 elif [ ${Opt} -eq 2 ]
 then
-        ff=3
-        nfolder=comb005_v01_OS_002_ff${ff}_selected_HPC
-        all_pickle=comb005_002_all_os_4folds_antiCTLA4.pkl
+    	nadd=results/BarlowTwins_3_twentyE/comb005_trainE_40x_896px/h224_w224_n3_zdim128/hdf5_comb005_TCGA_40x_896px_he_complete_OS.h5
+    	ff=3
+    	nfolder=comb005_v01_OS_002_ff${ff}_TCGA
+    	all_pickle=up_comb005_002_all_os_4folds_antiCTLA4.pkl
         nres=2.0
+        nlrat=0.0
+        nalpha=10.
+        remove_clusters_type='anti-CTLA4'
+	#remove_clusters_type='None'
+
+elif [ ${Opt} -eq 3 ]
+then
+    	nadd=results/BarlowTwins_3_twentyE/comb005_trainE_40x_896px/h224_w224_n3_zdim128/hdf5_comb005_TCGA_40x_896px_he_complete_OS.h5
+    	ff=3
+    	nfolder=comb005_v01_OS_003_ff${ff}_TCGA
+    	all_pickle=up_comb005_003_all_os_4folds_antiPD1.pkl
+        nres=2.0
+        nlrat=0.0
+        nalpha=10.
+        remove_clusters_type='anti-PD1'
+	#remove_clusters_type='None'
+
+elif [ ${Opt} -eq 4 ]
+then
+	nadd=results/BarlowTwins_3_twentyE/comb005_trainE_40x_896px/h224_w224_n3_zdim128/hdf5_comb005_TCGA_40x_896px_he_complete_OS.h5
+        ff=3
+        nfolder=comb005_v01_OS_004_ff${ff}_TCGA
+    	all_pickle=up_comb005_004_all_os_4folds_antiPD1andCTLA4.pkl
+	nres=2.0
+        nlrat=0.0
+        nalpha=0.07
+        remove_clusters_type='both'
+	#remove_clusters_type='None'
+
+
+elif [ ${Opt} -eq 5 ]
+then
+	nadd=results/BarlowTwins_3_twentyE/BarlowTwins_3_twentyE/h224_w224_n3_zdim128/hdf5_NYU005_0u2525_896pxx_he_combined_allosNYU.h5
+	ff=3
+	nfolder=comb005_v01_OS_001_ff${ff}_NYU
+	all_pickle=up_comb005_001_all_os_4folds.pkl
+        nres=2.0
+        nlrat=0.0
+        nalpha=10.
+	remove_clusters_type='allT'
+
+elif [ ${Opt} -eq 6 ]
+then
+	nadd=results/BarlowTwins_3_twentyE/BarlowTwins_3_twentyE/h224_w224_n3_zdim128/hdf5_NYU005_0u2525_896pxx_he_combined_antiCTLA4.h5
+	ff=3
+	nfolder=comb005_v01_OS_002_ff${ff}_NYU
+	all_pickle=up_comb005_002_all_os_4folds_antiCTLA4.pkl
+	nres=2.0
         nlrat=0.0
         nalpha=10
 	remove_clusters_type='anti-CTLA4'
 
 
-elif [ ${Opt} -eq 230 ]
+elif [ ${Opt} -eq 7 ]
 then
-        ff=3
-        nfolder=comb005_v01_OS_002_ff${ff}_antiCTLA4
-        all_pickle=comb005_002_all_os_4folds_antiCTLA4.pkl
-        nres=2.0
-        nlrat=0.0
-        nalpha=10
-	remove_clusters_type='None'
+	nadd=results/BarlowTwins_3_twentyE/BarlowTwins_3_twentyE/h224_w224_n3_zdim128/hdf5_NYU005_0u2525_896pxx_he_combined_antiPD1.h5
+	ff=3
+	nfolder=comb005_v01_OS_003_ff${ff}_NYU
+	all_pickle=up_comb005_003_all_os_4folds_antiPD1.pkl
+	nres=2.0
+	nlrat=0.0
+	nalpha=10
+	remove_clusters_type='anti-PD1'
 
-elif [ ${Opt} -eq 231 ]
+
+elif [ ${Opt} -eq 8 ]
 then
-        #nadd=results/BarlowTwins_3_twentyE/comb005_5setsNoNYU_40x_896px/h224_w224_n3_zdim128/hdf5_NYU005_0u2525_896pxx_he_combined_antiCTLA4_LN.h5
-        ff=3
-        nfolder=comb005_v01_OS_002_ff${ff}_LN
-        all_pickle=comb005_002_all_os_4folds_antiCTLA4.pkl
-        nres=2.0
-        nlrat=0.0
-        nalpha=10
-        remove_clusters_type='None'
-
-elif [ ${Opt} -eq 232 ]
-then
-        #nadd=results/BarlowTwins_3_twentyE/comb005_5setsNoNYU_40x_896px/h224_w224_n3_zdim128/hdf5_NYU005_0u2525_896pxx_he_combined_antiCTLA4_ST.h5
-        ff=3
-        nfolder=comb005_v01_OS_002_ff${ff}_ST
-        all_pickle=comb005_002_all_os_4folds_antiCTLA4.pkl
-        nres=2.0
-        nlrat=0.0
-        nalpha=10
-        remove_clusters_type='None'
-
-
-elif [ ${Opt} -eq 233 ]
-then
-        #nadd=results/BarlowTwins_3_twentyE/comb005_5setsNoNYU_40x_896px/h224_w224_n3_zdim128/hdf5_NYU005_0u2525_896pxx_he_combined_antiCTLA4.h5
-        ff=3
-        nfolder=comb005_v01_OS_002_ff${ff}_antiCTLA4_selected_HPC
-        all_pickle=comb005_002_all_os_4folds_antiCTLA4.pkl
-        nres=2.0
-        nlrat=0.0
-        nalpha=10
-	#naplha=0.05
-        remove_clusters_type=anti-CTLA4
-
-elif [ ${Opt} -eq 234 ]
-then
-        #nadd=results/BarlowTwins_3_twentyE/comb005_5setsNoNYU_40x_896px/h224_w224_n3_zdim128/hdf5_NYU005_0u2525_896pxx_he_combined_antiCTLA4_ST.h5
-        ff=3
-        nfolder=comb005_v01_OS_002_ff${ff}_ST_selected_HPC
-        all_pickle=comb005_002_all_os_4folds_antiCTLA4.pkl
-        nres=2.0
-        nlrat=0.0
-        nalpha=10
-	#nalpha=0.05
-        remove_clusters_type=anti-CTLA4
-
-elif [ ${Opt} -eq 235 ]
-then
-        #nadd=results/BarlowTwins_3_twentyE/comb005_5setsNoNYU_40x_896px/h224_w224_n3_zdim128/hdf5_NYU005_0u2525_896pxx_he_combined_antiCTLA4_LN.h5
-        ff=3
-        nfolder=comb005_v01_OS_002_ff${ff}_LN_selected_HPC
-        all_pickle=comb005_002_all_os_4folds_antiCTLA4.pkl
-        nres=2.0
-        nlrat=0.0
-        nalpha=10
-        nalpha=0.05
-	remove_clusters_type=anti-CTLA4
-
-elif [ ${Opt} -eq 3 ]
-then
-	#nadd=results/BarlowTwins_3_twentyE/comb005_5setsNoNYU_40x_896px/h224_w224_n3_zdim128/hdf5_NYU005_0u2525_896pxx_he_combined_allosNYU.h5 
-        ff=3
-        nfolder=comb005_v01_OS_003_ff${ff}
-        all_pickle=comb005_003_all_os_4folds_antiPD1.pkl
-        nres=2.0
-        nlrat=0.0
-        #nalpha=15
-	nalpha=5
-
-elif [ ${Opt} -eq 32 ]
-then
-	#nadd=results/BarlowTwins_3_twentyE/comb005_5setsNoNYU_40x_896px/h224_w224_n3_zdim128/hdf5_NYU005_0u2525_896pxx_he_combined_allosNYU.h5 
-        ff=3
-        nfolder=comb005_v01_OS_003_ff${ff}_selected_HPC
-        all_pickle=comb005_003_all_os_4folds_antiPD1.pkl
-        nres=2.0
-        nlrat=0.0
-        nalpha=15
-        # nalpha=5
-	remove_clusters_type=anti-PD1
-
-
-elif [ ${Opt} -eq 330 ]
-then
-        #nadd=results/BarlowTwins_3_twentyE/comb005_5setsNoNYU_40x_896px/h224_w224_n3_zdim128/hdf5_NYU005_0u2525_896pxx_he_combined_antiPD1.h5
-        ff=3
-        nfolder=comb005_v01_OS_003_ff${ff}_antiPD1
-        all_pickle=comb005_003_all_os_4folds_antiPD1.pkl
-        nres=2.0
-        nlrat=0.0
-        nalpha=15
-        # nalpha=5
-	#nalpha=100
-        remove_clusters_type='None'
-
-elif [ ${Opt} -eq 331 ]
-then
-        #nadd=results/BarlowTwins_3_twentyE/comb005_5setsNoNYU_40x_896px/h224_w224_n3_zdim128/hdf5_NYU005_0u2525_896pxx_he_combined_antiPD1_LN.h5
-        ff=3
-        nfolder=comb005_v01_OS_003_ff${ff}_LN
-        all_pickle=comb005_003_all_os_4folds_antiPD1.pkl
-        nres=2.0
-        nlrat=0.0
-        nalpha=15
-        # nalpha=5
-        remove_clusters_type='None'
-
-elif [ ${Opt} -eq 332 ]
-then
-        #nadd=results/BarlowTwins_3_twentyE/comb005_5setsNoNYU_40x_896px/h224_w224_n3_zdim128/hdf5_NYU005_0u2525_896pxx_he_combined_antiPD1_ST.h5
-        ff=3
-        nfolder=comb005_v01_OS_003_ff${ff}_ST
-        all_pickle=comb005_003_all_os_4folds_antiPD1.pkl
-        nres=2.0
-        nlrat=0.0
-        nalpha=15
-        # nalpha=5
-        remove_clusters_type='None'
-
-
-elif [ ${Opt} -eq 333 ]
-then
-        #nadd=results/BarlowTwins_3_twentyE/comb005_5setsNoNYU_40x_896px/h224_w224_n3_zdim128/hdf5_NYU005_0u2525_896pxx_he_combined_antiPD1.h5
-        ff=3
-        nfolder=comb005_v01_OS_003_ff${ff}_antiPD1_selected_HPC
-        all_pickle=comb005_003_all_os_4folds_antiPD1.pkl
-        nres=2.0
-        nlrat=0.0
-        nalpha=15
-        nalpha=100
-        remove_clusters_type=anti-PD1
-
-elif [ ${Opt} -eq 334 ]
-then
-        #nadd=results/BarlowTwins_3_twentyE/comb005_5setsNoNYU_40x_896px/h224_w224_n3_zdim128/hdf5_NYU005_0u2525_896pxx_he_combined_antiPD1_ST.h5
-        ff=3
-        nfolder=comb005_v01_OS_003_ff${ff}_ST_selected_HPC
-        all_pickle=comb005_003_all_os_4folds_antiPD1.pkl
-        nres=2.0
-        nlrat=0.0
-        nalpha=15
-        #nalpha=100
-        remove_clusters_type=anti-PD1
-
-elif [ ${Opt} -eq 335 ]
-then
-        ff=3
-        nfolder=comb005_v01_OS_003_ff${ff}_LN_selected_HPC
-        all_pickle=comb005_003_all_os_4folds_antiPD1.pkl
-        nres=2.0
-        nlrat=0.0
-        nalpha=15
-        #nalpha=100
-        remove_clusters_type=anti-PD1
-
-
-elif [ ${Opt} -eq 4 ]
-then
-        ff=3
-        nfolder=comb005_v01_OS_004_ff${ff}
-        all_pickle=comb005_004_all_os_4folds_antiPD1andCTLA4.pkl
-        nres=2.0
+	nadd=results/BarlowTwins_3_twentyE/BarlowTwins_3_twentyE/h224_w224_n3_zdim128/hdf5_NYU005_0u2525_896pxx_he_combined_both.h5
+	ff=3
+	nfolder=comb005_v01_OS_004_ff${ff}_NYU
+	all_pickle=up_comb005_004_all_os_4folds_antiPD1andCTLA4.pkl
+	nres=2.0
         nlrat=0.0
         nalpha=0.07
         remove_clusters_type='both'
-
 fi
 
 python3 ./report_representationsleiden_cox_individual_Selected_HPC.py \
@@ -226,7 +120,7 @@ python3 ./report_representationsleiden_cox_individual_Selected_HPC.py \
 --event_ind_field ${all_ind} \
 --event_data_field ${all_data} \
 --folds_pickle ${all_pickle} \
- --h5_complete_path    results/BarlowTwins_3_twentyE/comb005_5setsNoNYU_40x_896px/h224_w224_n3_zdim128/hdf5_comb005_5setsNoNYU_40x_896px_he_complete_allos.h5  \
+ --h5_complete_path    results/BarlowTwins_3_twentyE/comb005_trainE_40x_896px/h224_w224_n3_zdim128/hdf5_comb005_trainE_40x_896px_he_complete_allos.h5 \
  --h5_additional_path  ${nadd} \
 --resolution ${nres} \
 --force_fold ${ff} \
