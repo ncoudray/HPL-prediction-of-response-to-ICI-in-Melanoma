@@ -3,15 +3,14 @@
 Using a subset of the TCGA cohort, we illustrate here how you can potentially use the trained network on your own dataset and reproduce the results obtained in the manuscript. All examples are given as if runs are submitted on a slurm cluster. Before submitting any script, edit it to adjust the inputs and paths to match those on your system.
 
 ## Required packages and installation
-As mentioned esrlier, to run the code you need to install [DeepPATH](https://github.com/ncoudray/DeepPATH) and [HPL](https://github.com/AdalbertoCq/Histomorphological-Phenotype-Learning). For simplicity, the required libraries have been copied here but please refer to the original github pages for installations and associated environments/libaries required.
+As mentioned esrlier, to run the code you need to install [DeepPATH](https://github.com/ncoudray/DeepPATH) and [HPL](https://github.com/AdalbertoCq/Histomorphological-Phenotype-Learning). For simplicity, the required libraries have been copied here but please refer to the original github pages to set the associated environments (conda yml files for DeepPATH and related docker for HPL).
 
 The code here was developed using the slurm executor on NYU's [UltraViolet HPC cluster](https://med.nyu.edu/research/scientific-cores-shared-resources/high-performance-computing-core). The python script is therefore here given with slurm headers appropriate for this cluster as example so they could easily be adapted.
 
 All additional data mentioned throughout can be downloaded from [our public repository: https://genome.med.nyu.edu/public/tsirigoslab/DeepLearning/Melanoma_Faak_etal](https://genome.med.nyu.edu/public/tsirigoslab/DeepLearning/Melanoma_Faak_etal).
 
 ## Download the checkpoints, embeddings and clusters associated with the Melanoma trained network
-The checkpoints of the trained networks can be downloaded from our [public repository](https://genome.med.nyu.edu/public/tsirigoslab/DeepLearning/Melanoma_Faak_etal/). 
-
+The data related to our trained networks can be downloaded from our [public repository](https://genome.med.nyu.edu/public/tsirigoslab/DeepLearning/Melanoma_Faak_etal/). The checkpoints will be in `data_model_output.tar.gz`, the embeddings and associated clusters in `results.tar.gz`. Pickle files associated with the different Cox regressions are also available there. 
 
 ## Download the TCGA dataset
 Although the TCGA cohort does not contain the treatment information and is somehow different from our training cohort, the presence of some slides from metastatic tumor could be used to check the association to HPCs. 
@@ -20,7 +19,7 @@ The data was downloaded from the [TCGA GDC website](https://portal.gdc.cancer.go
 
 
 ## 1. Pre-processing
-You can skip these steps and directly used the pre-processed stack available in the datasets folder from our [public repository](https://genome.med.nyu.edu/public/tsirigoslab/DeepLearning/Melanoma_Faak_etal/).
+You can skip these steps and directly used the pre-processed stack available as `datasets.tar.gz` folder from our [public repository](https://genome.med.nyu.edu/public/tsirigoslab/DeepLearning/Melanoma_Faak_etal/) if you're not planning to run step 6.
 
 ### 1.a. Tile the slides
 The following job will launch 1 job per slide on the cluster and save results in a folder named `896px_0um2525_B40_20250221_TCGA`.
