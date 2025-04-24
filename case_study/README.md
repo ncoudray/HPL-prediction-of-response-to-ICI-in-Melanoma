@@ -155,25 +155,7 @@ Although it is not known whether the patients from the TCGA cohorts had anti-PD-
 :-------------------------:|:-------------------------:
 ![](TCGA_003_KM_leiden_2p0_test.jpg) | ![](TCGA_003_KM_leiden_2p0_additional.jpg) 
 
-## 9. Example of additional tests
-
-If your dataset contains extra information from orthogonal methods, you can analyse HPC enriched in tiles associated with specific features. For example, we retrieved the Tumor-Mutational Burden (TMB, file `labels_TCGA_TMB_unique.csv` attached) for that TCGA cohort and using a Spearman correlation, checked HPCs enriched in slides from patients with low/high TMB. The `TCGA_SKC_TMB.ipynb` code can be run via a jupyter notebook.
-
-
-From it, you would obtain the Spearman Correlation between the TMB and the HPCs:
-
-<img src="TMB_SC_values.png" width="600"/> 
-
-the p-values associated:
-
-<img src="TMB_SC_pvalues.png" width="600"/> 
-
-and a those information plotted on the same PAGA graph as those shown in the manuscript:
-
-<img src="TMB_PAGA.png" width="400"/> 
-
-
-## 10. Additional control set 
+## 9. Additional control set 
 
 As a way to control your installation and settings, we also provide embedding and pre-calculated embeddings and projection of the NYU cohort. Running steps 8 and 9 above using options `Opt=2`, `Opt=3`  and `Opt=4` would give you the same KM-plots as Fig S9 and S10E of the manuscript. 
 
