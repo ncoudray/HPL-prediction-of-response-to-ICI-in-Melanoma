@@ -4,7 +4,7 @@ Use of the Histomorphological Phenotype Learning self-supervised tools to study 
 
 ## Associated manuscript
 
-"Artificial Intelligence Algorithm Predicts Response to Immune Checkpoint Inhibitors." In preparation.
+[Fa'ak F, Coudray N, Jour G, Ibrahim M, Illa-Bochaca I, Qiu S, Claudio Quiros A, Yuan K, Johnson DB, Rimm DL, Weber JS. Artificial Intelligence Algorithm Predicts Response to Immune Checkpoint Inhibitors. Clinical Cancer Research. 2025 Jun 24.](https://aacrjournals.org/clincancerres/article/doi/10.1158/1078-0432.CCR-24-3720/763552/Artificial-Intelligence-Algorithm-Predicts)
 
 ## Required packages
 To run the code you need to install [DeepPATH](https://github.com/ncoudray/DeepPATH) and [HPL](https://github.com/AdalbertoCq/Histomorphological-Phenotype-Learning). 
